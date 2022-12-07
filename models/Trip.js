@@ -43,15 +43,13 @@ Trip.init(
       references: {
         model: 'user',
         key: 'id',
-        unique: false,
       },
     },
     destination_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'destination',
-        unique: false,
+        model: 'destionation',
+        key: 'id',
       },
     },
   },
@@ -65,6 +63,3 @@ Trip.init(
 );
 
 module.exports = Trip;
-
-// Destination
-// References - user, destinations, companion
