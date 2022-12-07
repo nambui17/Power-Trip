@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS powertrip_db;
+CREATE DATABASE IF NOT EXISTS powertrip_db;
