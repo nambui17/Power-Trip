@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{username}}!</h2>
+  </div>
+</div>
+
+  {{#if trips.length}}
+  <div class="col-md-6 project-list">
+    <h3>Your Trips:</h3>
+
+    {{#each trips as |trip|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/trip/{{trip.id}}">{{trip.destination.location}}</a></h4>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Trip:</h3>
+
+    <form class="form new-trip-form">
+
+      <div class="form-group">
+        <label for="trip-depart">What is your departure date?</label>
+        <input class="form-input" type="text" id="trip-depart" name="trip-depart" />
+      </div>
+
+      <div class="form-group">
+        <label for="trip-return">What is your return date?</label>
+        <input class="form-input" type="text" id="trip-return" name="trip-return" />
+      </div>
+
+      <div class="form-group">
+        <label for="trip-rating">What rating do you give this trip?</label>
+        <input class="form-input" type="number" id="trip-rating" name="trip-rating" />
+      </div>
+      <div class="form-group">
+        <label for="trip-comment">What commments do you have about this trip?</label>
+        <textarea class="form-input" id="trip-comment" name="trip-comment"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="trip-price">What is the price of your trip?</label>
+        <input class="form-input" type="number" id="trip-price" name="trip-price" />
+      </div>
+      <div class="form-group">
+        <label for="trip-done">Have you completed this trip?</label>
+        <input class="form-input" type="checkbox" id="trip-done" name="trip-done" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+<script src="./js/profile.js"></script>
