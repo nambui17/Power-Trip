@@ -2,6 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Trip extends Model {}
+
 Trip.init(
   {
     id: {
@@ -10,7 +11,7 @@ Trip.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    date: {
+    start_date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
@@ -19,12 +20,12 @@ Trip.init(
     },
     rating: {
       type: DataTypes.FLOAT,
-      allowNull: false,
       validate: {
         isFloat: true,
         min: 0,
         max: 5,
       },
+      defaultValue: 0,
     },
     comment: {
       type: DataTypes.STRING,
@@ -36,22 +37,15 @@ Trip.init(
     },
     done: {
       type: DataTypes.BOOLEAN,
-      default: false,
+      defaultValue: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
-    destination_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'destination',
-        key: 'id',
-      },
-    },
+    end_date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      validate: {
+        isDate: true,
+      }
+    }
   },
   {
     sequelize,

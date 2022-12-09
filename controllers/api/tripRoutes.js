@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { Trip } = require('../../models');
+const { Trip, Destination } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const tripData = await Trip.create({
       ...req.body,
-      user_id: req.session.user_id,
+      // user_id: req.session.user_id,
     });
 
     res.status(200).json(tripData);
@@ -48,6 +48,31 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 
     res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/', async (req, res) => {
+  try {
+    const tripData = await Trip.findAll({
+      include: [{ model: Destination }],
+    });
+    res.status(200).json(tripData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try {
+    const tripData = await Trip.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+      include: [{ model: Destination }],
+    });
+    res.status(200).json(tripData);
   } catch (err) {
     res.status(500).json(err);
   }

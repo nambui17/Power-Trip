@@ -1,0 +1,44 @@
+[
+  {
+    "start_date": "2025-04-27",
+    "end_date": "2025-05-24",
+    "comment": "Birthday Trip!",
+    "price": 1000.43
+  },
+  {
+    "start_date": "2025-05-27",
+    "end_date": "2025-07-24",
+    "comment": "Hello",
+    "price": 500.23
+  },
+  {
+    "start_date": "2025-04-27",
+    "end_date": "2025-05-24",
+    "comment": "Clarice",
+    "price": 224.99
+  },
+  {
+    "start_date": "2025-04-27",
+    "end_date": "2025-05-24",
+    "comment": "It puts the lotion",
+    "price": 475.00
+  },
+  {
+    "start_date": "2025-04-27",
+    "end_date": "2025-05-24",
+    "comment": "On its skin",
+    "price": 999
+  },
+  {
+    "start_date": "2025-04-27",
+    "end_date": "2025-05-24",
+    "comment": "Or it gets",
+    "price": 233.87
+  },
+  {
+    "start_date": "2025-04-27",
+    "end_date": "2025-05-24",
+    "comment": "The hose again",
+    "price": 9999.00
+  }
+]

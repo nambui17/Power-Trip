@@ -23,8 +23,9 @@ Destination.init(
         isFloat: true,
         min: 0,
         max: 5
-      }
-    },
+      },
+      defaultValue: 0
+    }
   },
   {
     sequelize,

@@ -1,0 +1,30 @@
+[
+    {
+        "location": "Los Angeles",
+        "rating": 3.2
+    },
+    {
+        "location": "Miami",
+        "rating": 3.5
+    },
+    {
+        "location": "New York",
+        "rating": 4.1
+    },
+    {
+        "location": "London",
+        "rating": 2.2
+    },
+    {
+        "location": "Paris",
+        "rating": 1.7
+    },
+    {
+        "location": "Dubai",
+        "rating": 2.1
+    },
+    {
+        "location": "Ho Chi Minh City",
+        "rating": 4.9
+    }
+  ]
