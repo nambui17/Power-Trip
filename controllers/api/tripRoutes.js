@@ -5,13 +5,13 @@ const withAuth = require('../../utils/auth');
 router.post('/', async (req, res) => {
   try {
     const tripData = await Trip.create(req.body);
-    req.body.users.forEach(async (user) => {
+    req.body.users.map(async (user) => {
       await Companion.create({
         trip_id: tripData.id,
         user_id: user
       });
     });
-    req.body.destinations.forEach(async (destination) => {
+    req.body.destinations.map(async (destination) => {
       await TripDestination.create({
         trip_id: tripData.id,
         destination_id: destination

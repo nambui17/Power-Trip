@@ -60,7 +60,8 @@ router.get('/', async (req, res) => {
     const userData = await User.findAll({
       include: [{model: Trip}]
     });
-    res.status(200).json(userData);
+    const users = userData.map((user) => user.get({plain: true}));
+    res.status(200).json(users);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -8,6 +8,7 @@ const {
   TripDestination,
 } = require('../models');
 const withAuth = require('../utils/auth');
+const { Op } = require('sequelize');
 
 router.get('/', async (req, res) => {
   try {
@@ -37,12 +38,25 @@ router.get('/profile', withAuth, async (req, res) => {
       include: [{ model: Trip, include: Destination }],
     });
     const user = userData.get({plain: true});
+    //Gets all users except for the one logged in.
+    const allUserData = await User.findAll({
+      where: {
+        id: {
+          [Op.ne]: req.session.user_id
+        }
+      }
+    });
+    const allUsers = allUserData.map((u) => u.get({plain:true}));
+    const destinationData = await Destination.findAll();
+    const allDest = destinationData.map((destination) => destination.get({plain: true}));
     const trips = user.trips;
     const destinations = trips.destinations;
     res.render('profile', {
       user,
       trips,
       destinations,
+      allUsers,
+      allDest,
       logged_in: true,
     });
   } catch (err) {

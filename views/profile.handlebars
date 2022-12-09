@@ -1,64 +1,126 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
+    <h2>Welcome, {{user.username}}!</h2>
   </div>
 </div>
 
-  <div class="col-md-6 project-list">
-    <h3>Your Trips:</h3>
+<main class="container">
+  <div class="row w-100">
+    <div class="col col-12">
+      <div class="col-md project-list">
+        <h3>Your Trips:</h3>
+        <div class='container'>
+          <div class='row justify-content-center'>
+            <button
+              type='button'
+              class='btn btn-primary'
+              data-toggle='modal'
+              data-target='#tripModal'
+            >
+              Create a Trip!
+            </button>
+          </div>
+        </div>
 
-    {{#each trips as |trip|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4>
-          {{#each destinations as |destination|}}
-          <a href="/trip/{{trip.id}}">
-          {{destination.location}}
-          </a>
+          {{#each trips as |trip|}}
+          <h2>{{trip.comment}}</h2>
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <h4>
+                {{#each destinations as |destination|}}
+                <a href="/trip/{{trip.id}}">
+                {{destination.location}}
+                </a>
+                {{/each}}
+              </h4>
+            </div>
+          </div>
           {{/each}}
-        </h4>
+        </div>
+    </div>
+  </div>
+    {{!-- <div class="col col-8">
+
+    </div> --}}
+  </div>
+
+</main>
+
+<div
+  class='modal fade'
+  id='tripModal'
+  tabindex='-1'
+  role='dialog'
+  aria-labelledby='tripModalLabel'
+  aria-hidden='true'
+>
+  <div class='modal-dialog modal-lg' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='tripModalLabel'>Create your trip here!</h5>
+        <button
+          type='button'
+          class='close'
+          data-dismiss='modal'
+          aria-label='Close'
+        >
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        <form>
+          <div class="form-group mb-2">
+            <label for="tripComment">Trip Title</label>
+              <textarea class="form-control form-control-sm" id="tripComment" rows="1"></textarea>
+          </div>
+          <div class="form-group mb-3">
+            <div class="row align-items-center justify-content-around">
+              <label class="control-label col" for="start-date">Start Date</label>
+              <input class="form-control col" id="start-date" name="start-date" placeholder="Start Date" type="text"/>
+              <label class="control-label col" for="end-date">End Date</label>
+              <input class="form-control col" id="end-date" name="end-date" placeholder="End Date" type="text"/>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="trip-price">What is the price of your trip? $</label>
+            <input class="form-input" type="number" id="trip-price" name="trip-price" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="trip-rating">What rating do you give this trip?</label>
+            <input class="form-input" type="number" id="trip-rating" name="trip-rating" />
+          </div>
+          <div class="form-group mb-3">
+            <h3>Pick all Everyone going on this trip!</h3>
+            <select class="selectpicker w-100" id="selectUsers" multiple>
+              {{#each allUsers as |friend|}}
+              <option value="{{friend.id}}">{{friend.username}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <h3>Pick The Destinations for this Trip!</h3>
+            <select class="selectpicker w-100" id="selectDest" multiple>
+              {{#each allDest as |destination|}}
+              <option value="{{destination.id}}">{{destination.location}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="trip-done">Have you completed this trip?</label>
+            <input class="form-input" type="checkbox" id="trip-done" name="trip-done" />
+          </div>
+          <div class='modal-footer'>
+            <button
+              type='button'
+              class='btn btn-secondary'
+              data-dismiss='modal'
+              >Close</button>
+            <button type='submit' class='btn btn-primary' id="tripCreate">Create trip!</button>
+          </div>  
+        </form>
       </div>
     </div>
-    {{/each}}
   </div>
 </div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Trip:</h3>
-
-    <form class="form new-trip-form">
-
-      <div class="form-group">
-        <label for="trip-depart">What is your departure date?</label>
-        <input class="form-input" type="text" id="trip-depart" name="trip-depart" />
-      </div>
-
-      <div class="form-group">
-        <label for="trip-return">What is your return date?</label>
-        <input class="form-input" type="text" id="trip-return" name="trip-return" />
-      </div>
-
-      <div class="form-group">
-        <label for="trip-rating">What rating do you give this trip?</label>
-        <input class="form-input" type="number" id="trip-rating" name="trip-rating" />
-      </div>
-      <div class="form-group">
-        <label for="trip-comment">What commments do you have about this trip?</label>
-        <textarea class="form-input" id="trip-comment" name="trip-comment"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="trip-price">What is the price of your trip?</label>
-        <input class="form-input" type="number" id="trip-price" name="trip-price" />
-      </div>
-      <div class="form-group">
-        <label for="trip-done">Have you completed this trip?</label>
-        <input class="form-input" type="checkbox" id="trip-done" name="trip-done" />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
 
 <script src="./js/profile.js"></script>
