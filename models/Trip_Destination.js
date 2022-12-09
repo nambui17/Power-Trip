@@ -1,22 +1,15 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Companion extends Model {}
+class TripDestination extends Model {}
 
-Companion.init(
+TripDestination.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
     },
     trip_id: {
       type: DataTypes.INTEGER,
@@ -38,8 +31,8 @@ Companion.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'companion',
+    modelName: 'trip_destination',
   }
 );
 
-module.exports = Companion;
+module.exports = TripDestination;
