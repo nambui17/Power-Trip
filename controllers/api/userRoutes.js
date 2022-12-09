@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../../models');
+const { User, Trip, Destination } = require('../../models');
 
 // Signup route
 router.post('/', async (req, res) => {
@@ -55,22 +55,25 @@ router.post('/logout', (req, res) => {
 });
 
 //get all users route
-router.get('/', async (req,res) => {
+router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll();
+    const userData = await User.findAll({
+      include: [{model: Trip}]
+    });
     res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/:id', async (req,res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const userData = await User.findOne(
-      {where: {
-        id: req.params.id
-      }}
-    );
+    const userData = await User.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [{ model: Trip }],
+    });
     res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);

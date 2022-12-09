@@ -4,19 +4,23 @@
   </div>
 </div>
 
-  {{#if trips.length}}
   <div class="col-md-6 project-list">
     <h3>Your Trips:</h3>
 
     {{#each trips as |trip|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/trip/{{trip.id}}">{{trip.destination.location}}</a></h4>
+        <h4>
+          {{#each destinations as |destination|}}
+          <a href="/trip/{{trip.id}}">
+          {{destination.location}}
+          </a>
+          {{/each}}
+        </h4>
       </div>
     </div>
     {{/each}}
   </div>
-  {{/if}}
 </div>
 
 <div class="row mt-4">

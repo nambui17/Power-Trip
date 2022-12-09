@@ -6,7 +6,6 @@ $('.signup-form').on('submit', async function (event) {
   const passwordHelp = $('#passwordHelpBlock');
 
   if (username && password && passre) {
-    debugger;
     if (password === passre) {
       passwordHelp.attr('hidden', true);
       const response = await fetch('/api/users', {

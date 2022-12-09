@@ -1,14 +1,22 @@
 const router = require('express').Router();
-const { Trip, Destination } = require('../../models');
+const { Trip, Destination, User, TripDestination, Companion} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
   try {
-    const tripData = await Trip.create({
-      ...req.body,
-      // user_id: req.session.user_id,
+    const tripData = await Trip.create(req.body);
+    req.body.users.forEach(async (user) => {
+      await Companion.create({
+        trip_id: tripData.id,
+        user_id: user
+      });
     });
-
+    req.body.destinations.forEach(async (destination) => {
+      await TripDestination.create({
+        trip_id: tripData.id,
+        destination_id: destination
+      });
+    });
     res.status(200).json(tripData);
   } catch (err) {
     res.status(400).json(err);
@@ -56,7 +64,7 @@ router.put('/:id', withAuth, async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const tripData = await Trip.findAll({
-      include: [{ model: Destination }],
+      include: [{ model: Destination }, {model: User, attributes: ['username','id']}],
     });
     res.status(200).json(tripData);
   } catch (err) {
