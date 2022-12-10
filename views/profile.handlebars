@@ -4,11 +4,26 @@
   </div>
 </div>
 
-<main class="container">
-  <div class="row w-100">
-    <div class="col col-12">
-      <div class="col-md project-list">
+<main class="container-fluid">
+  <div>
+    <div>
+      <div class=" project-list">
         <h3>Your Trips:</h3>
+          {{#each trips as |trip|}}
+          <h2>{{trip.comment}}</h2>
+          <div class="row mb-2">
+            <div>
+              <h4>
+                {{#each destinations as |destination|}}
+                <a href="/trip/{{trip.id}}">
+                {{destination.location}}
+                </a>
+                {{/each}}
+              </h4>
+            </div>
+          </div>
+          {{/each}}
+      </div>
         <div class='container'>
           <div class='row justify-content-center'>
             <button
@@ -20,22 +35,6 @@
               Create a Trip!
             </button>
           </div>
-        </div>
-
-          {{#each trips as |trip|}}
-          <h2>{{trip.comment}}</h2>
-          <div class="row mb-2">
-            <div class="col-md-8">
-              <h4>
-                {{#each destinations as |destination|}}
-                <a href="/trip/{{trip.id}}">
-                {{destination.location}}
-                </a>
-                {{/each}}
-              </h4>
-            </div>
-          </div>
-          {{/each}}
         </div>
     </div>
   </div>
