@@ -1,0 +1,75 @@
+/* * {
+    outline: 3px solid limegreen !important;
+    background: rgba(0, 151, 0, 0.1) !important;
+} */
+
+
+
+body {
+    background: #FFE4C4;
+}
+.navbar {
+    background: #DEB887;
+
+}
+.nav-link,
+.navbar-brand {
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+}
+.nav-link {
+    margin-right: 1em !important;
+}
+.nav-link:hover {
+    color: #000;
+    box-shadow: inset 0 -100px 0 0 rgb(206, 126, 35);
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.ml {
+    margin-left: 15px;
+}
+
+
+
+/*home page styling */
+
+.container {
+    display: flex;
+    /* width: 1200px; */
+    margin: 0 auto;
+    padding: 10px;
+    
+
+}
+
+.plannedTrips {
+    flex: 0 0 200px
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+    
+
+}
+
+
+.pastTrips {
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+}
+
+.updates {
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+}
+
+.tripContainer {
+    display: flex; 
+    flex-direction: column;
+    width: 500px;
+}
