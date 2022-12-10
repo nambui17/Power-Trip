@@ -5,6 +5,9 @@ const {
   Trip,
   Companion,
   TripDestination,
+  Image,
+  TripImage,
+
 } = require('../models');
 
 const userData = require('./userData.json');
@@ -12,6 +15,8 @@ const tripData = require('./tripData.json');
 const destinationData = require('./destinationData.json');
 const companionData = require('./companionData.json');
 const tripDestinationData = require('./tripDestinationData.json');
+const imageData = require('./imageData.json');
+const tripImageData = require('./tripImageData.json');
 
 async function seedDatabase() {
   await sequelize.sync({ force: true });
@@ -39,6 +44,21 @@ async function seedDatabase() {
       returning: true,
     }
   );
+  const images = await Image.bulkCreate(
+    imageData,
+    {
+      individualHooks: true,
+      returning: true,
+    }
+  );
+  const tripImages = await TripImage.bulkCreate(
+    tripImageData,
+    {
+      individualHooks: true,
+      returning: true,
+    }
+  );
+
   process.exit(0);
 }
 

@@ -9,6 +9,14 @@ const {
 } = require('../models');
 const withAuth = require('../utils/auth');
 const { Op } = require('sequelize');
+const cloudinary = require('cloudinary').v2;
+
+const cloudinaryConfig = cloudinary.config({
+  cloud_name: process.env.CLOUDNAME,
+  api_key: process.env.CLOUDAPIKEY,
+  api_secret: process.env.CLOUDINARYSECRET,
+  secure: true
+})
 
 router.get('/', async (req, res) => {
   try {
