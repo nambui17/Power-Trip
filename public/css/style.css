@@ -3,6 +3,7 @@ body {
 }
 .navbar {
     background: #DEB887;
+
 }
 .nav-link,
 .navbar-brand {
@@ -19,4 +20,51 @@ body {
 }
 .navbar-collapse {
     justify-content: flex-end;
+
+}
+
+.ml {
+    margin-left: 15px;
+}
+
+
+
+/*home page styling */
+
+.container {
+    display: flex;
+    /* width: 1200px; */
+    margin: 0 auto;
+    padding: 10px;
+    
+
+}
+
+.plannedTrips {
+    flex: 0 0 200px
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+    
+
+}
+
+
+.pastTrips {
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+}
+
+.updates {
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+}
+
+.tripContainer {
+    display: flex; 
+    flex-direction: column;
+    width: 500px;
+
 }
