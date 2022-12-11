@@ -1,4 +1,77 @@
-<button id="upload_widget" class="btn btn-warning">Upload Files</button>
+<main class='container-fluid h-100'>
+  <div class='row'>
+    <div class='col col-8'>
+      <header class='row mb-5 mt-4'>
+        <h1 class='text-center trip_title' data-tripid="{{trip.id}}">{{trip.comment}}</h1>
+      </header>
+      <section class='container-fluid d-flex h-100'>
+        <section class='container-fluid d-flex justify-content-around'>
+          {{#each trip.images as |image|}}
+            <div class='card w-33'>
+              <img
+                src={{image.image_url}}
+                class='card-img-top trip_image'
+                alt='...'
+              />
+            </div>
+          {{/each}}
+        </section>
+        <aside>
+          <div class='card' style='width: 18rem;'>
+            <div class='card-body'>
+              <p class='card-text'>{{trip.id}}</p>
+            </div>
+          </div>
+        </aside>
+        <div class='container-fluid d-flex justify-content-between'>
+          <div class='form-check'>
+            <input
+              class='form-check-input'
+              type='checkbox'
+              value=''
+              id='defaultCheck1'
+            />
+            <label class='form-check-label' for='defaultCheck1'>
+              Default checkbox
+            </label>
+          </div>
+          <button id='upload_widget' class='btn btn-warning'>Upload Files</button>
+        </div>
+      </section>
+    </div>
+    <div class='col co-4'>
+      <div class='row'>
 
-<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script> 
-<script src="./js/cloudinary.js"></script>
+      </div>
+      <div class='row'>
+
+      </div>
+      <div class='row'>
+        <h2>Destinations</h2>
+      </div>
+      {{#each trip.destinations as |destination|}}
+        <div class='row'>
+          <p>{{destination.location}}</p>
+        </div>
+      {{/each}}
+      <div class='row'>
+        <form>
+          <div class='form-group'>
+            <label for='formControlRange'>Rating</label>
+            <input
+              type='range'
+              class='form-control-range'
+              id='formControlRange'
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script
+  src='https://upload-widget.cloudinary.com/global/all.js'
+  type='text/javascript'
+></script>
+<script src='/js/cloudinary.js'></script>

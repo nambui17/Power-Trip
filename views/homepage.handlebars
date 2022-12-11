@@ -7,27 +7,15 @@
 
 <div id='carouselExampleSlidesOnly' class='carousel slide' data-ride='carousel'>
   <div class='carousel-inner'>
-    <div class='carousel-item active'>
+    {{#each randImages as |image|}}
+    <div class='carousel-item {{#if @first}}active{{/if}}'>
       <img
         class='d-block w-100'
-        src='./images/Airport.jpg'
+        src={{image.image_url}}
         alt='First slide'
       />
     </div>
-    <div class='carousel-item'>
-      <img
-        class='d-block w-100'
-        src='./images/Arch.jpg'
-        alt='Second slide'
-      />
-    </div>
-    <div class='carousel-item'>
-      <img
-        class='d-block w-100'
-        src='./images/Bali.jpg'
-        alt='Third slide'
-      />
-    </div>
+    {{/each}}
   </div>
 </div>
 

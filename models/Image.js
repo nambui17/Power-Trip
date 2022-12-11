@@ -16,6 +16,14 @@ Image.init(
       allowNull: false,
       unique: true,
     },
+    trip_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'trip',
+        key: 'id'
+      }
+    }
   },
   {
     sequelize,

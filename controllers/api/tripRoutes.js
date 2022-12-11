@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Trip, Destination, User, TripDestination, Companion} = require('../../models');
+const { Trip, Destination, User, TripDestination, Companion, Image} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
@@ -64,7 +64,7 @@ router.put('/:id', withAuth, async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const tripData = await Trip.findAll({
-      include: [{ model: Destination }, {model: User, attributes: ['username','id']}],
+      include: [{ model: Destination }, {model: User, attributes: ['username','id']}, {model: Image, attributes: ['image_url']}],
     });
     res.status(200).json(tripData);
   } catch (err) {
@@ -76,9 +76,9 @@ router.get('/:id', async (req, res) => {
   try {
     const tripData = await Trip.findOne({
       where: {
-        id: req.session.user_id,
+        id: req.params.id,
       },
-      include: [{ model: Destination }],
+      include: [{ model: Destination }, {model: Image, attributes: ['image_url']}],
     });
     res.status(200).json(tripData);
   } catch (err) {

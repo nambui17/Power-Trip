@@ -1,3 +1,12 @@
+async function addImage(url) {
+  const tripId = $('.trip_title').data('tripid');
+  const response = fetch('/api/images', {
+    method: 'POST',
+    body: JSON.stringify({image_url: url, trip_id: tripId}),
+    headers: { 'Content-Type': 'application/json'},
+  });
+}
+
 function showUploadWidget() {
   cloudinary.openUploadWidget(
     {
@@ -9,6 +18,7 @@ function showUploadWidget() {
       cropping: false,
       multiple: true,
       defaultSource: 'local',
+      resourceType: 'image',
       styles: {
         palette: {
           window: '#FFFFFF',
@@ -34,8 +44,8 @@ function showUploadWidget() {
         },
       },
     },
-    (err, result) => {
-      console.log(result.info.secure_url);
+    async (err, result) => {
+      await addImage(result.info.secure_url);
     }
   );
 }

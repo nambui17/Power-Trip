@@ -70,3 +70,14 @@ body {
     width: 500px;
 
 }
+
+/* Trip images on profile/trip page */
+.trip_image {
+    width: 250px;
+    height: 250px;
+}
+
+.trip_title {
+    font-size: 64px;
+    font-family: 'Quicksand', sans-serif;
+}

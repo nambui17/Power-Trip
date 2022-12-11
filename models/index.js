@@ -3,7 +3,6 @@ const Trip = require('./Trip');
 const Destination = require('./Destination');
 const Companion = require('./Companion');
 const TripDestination = require('./Trip_Destination');
-const TripImage = require('./TripImage');
 const Image = require('./Image');
 
 User.belongsToMany(Trip, {
@@ -26,13 +25,7 @@ Trip.belongsToMany(Destination, {
   foreignKey: 'trip_id'
 });
 
-Image.belongsToMany(Trip, {
-  through: TripImage,
-  foreignKey: 'image_id'
-});
-
-Trip.belongsToMany(Image, {
-  through: TripImage,
+Trip.hasMany(Image, {
   foreignKey: 'trip_id'
 });
 
@@ -42,6 +35,5 @@ module.exports = {
   Destination,
   Companion,
   TripDestination,
-  Image,
-  TripImage,
+  Image
 };
