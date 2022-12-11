@@ -62,7 +62,7 @@ router.get('/trip/:id', withAuth, async (req, res) => {
       ],
     });
     const trip = tripData.get({ plain: true });
-    res.render('trip', {
+    res.render('profiletrip', {
       trip,
       logged_in: true,
     });
