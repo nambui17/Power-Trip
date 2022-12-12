@@ -1,10 +1,23 @@
+:root {
+    --bisque: #FFE4C4;
+    --burlywood: #DEB887;
+    --blusaph: #2E5266;
+    --slate: #6E8898;
+    --sienna: #3D0C11;
+    --pale: #E9E3B4;
+    --steel: #5A7D7C;
+    --citron: #91972A;
+    --imperial: #e44733;
+}
+
 body {
-    background: #FFE4C4;
+    background: var(--bisque);
 }
 .navbar {
-    background: #DEB887;
-
+    background: var(--burlywood);
+    padding: 0 25px 0 25px;
 }
+
 .nav-link,
 .navbar-brand {
     color: #fff;
@@ -13,6 +26,8 @@ body {
 }
 .nav-link {
     margin-right: 1em !important;
+    font-size: 24px;
+    border-radius: 5px;
 }
 .nav-link:hover {
     color: #000;
@@ -20,64 +35,60 @@ body {
 }
 .navbar-collapse {
     justify-content: flex-end;
-
+}
+.navbar-brand h1 {
+    font-size: 64px;
+    border-radius: 5px;
+    color: var(--blusaph);
+}
+.navbar-brand h1:hover {
+    color: #000;
+    box-shadow: inset 0 -100px 0 0 rgb(206, 126, 35);
 }
 
 .ml {
     margin-left: 15px;
 }
 
+#logout {
+    text-decoration: none;
+    color: var(--sienna);
+    font-size: 24px;
+}
 
+#logout:hover {
+    background-color: var(--slate);
+    color: var(--bisque);
+}
 
-/*home page styling */
-
-.container {
+/* Star rating styling */
+.rating {
     display: flex;
-    /* width: 1200px; */
-    margin: 0 auto;
-    padding: 10px;
-    
-
-}
-
-.plannedTrips {
-    flex: 0 0 200px;
-    padding: 5px;
-    /* width: 400px; */
-    border-radius: 5px;
-}
-
-.carousel-item img {
-    height: 50vh;
-    object-fit: contain;
-}
-
-.pastTrips {
-    padding: 5px;
-    /* width: 400px; */
-    border-radius: 5px;
-}
-
-.updates {
-    padding: 5px;
-    /* width: 400px; */
-    border-radius: 5px;
-}
-
-.tripContainer {
-    display: flex; 
-    flex-direction: column;
-    width: 500px;
-
-}
-
-/* Trip images on profile/trip page */
-.trip_image {
-    width: 250px;
-    height: 250px;
-}
-
-.trip_title {
-    font-size: 64px;
-    font-family: 'Quicksand', sans-serif;
-}
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+  
+  .rating > input{ display:none;}
+  
+  .rating > label {
+    position: relative;
+      width: 1em;
+      font-size: 6vw;
+      color: var(--imperial);
+      cursor: pointer;
+  }
+  .rating > label::before{ 
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+  }
+  .rating > label:hover:before,
+  .rating > label:hover ~ label:before {
+    opacity: 1 !important;
+  }
+  
+  .rating > input:checked ~ label:before{
+    opacity:1;
+  }
+  
+  .rating:hover > input:checked ~ label:before{ opacity: 0.4; }

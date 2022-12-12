@@ -26,13 +26,13 @@
           <h2>{{trip.comment}}</h2>
           <div class="row mb-2">
             <div class="col-md-8">
-              <h4>
+              <h3>
                 {{#each destinations as |destination|}}
                 <a href="/profile/trip/{{trip.id}}">
                 {{destination.location}}
                 </a>
                 {{/each}}
-              </h4>
+              </h3>
             </div>
           </div>
           {{/each}}
@@ -89,7 +89,8 @@
             <input class="form-input" type="number" id="trip-rating" name="trip-rating" />
           </div>
           <div class="form-group mb-3">
-            <h3>Pick all Everyone going on this trip!</h3>
+            <h3>Pick Everyone going on this trip!</h3>
+            <small>Hold control and click to select multiple people!</small>
             <select class="selectpicker w-100" id="selectUsers" multiple>
               {{#each allUsers as |friend|}}
               <option value="{{friend.id}}">{{friend.username}}</option>
@@ -98,6 +99,7 @@
           </div>
           <div class="form-group mb-3">
             <h3>Pick The Destinations for this Trip!</h3>
+            <small>Hold control and click to select multiple destinations</small>
             <select class="selectpicker w-100" id="selectDest" multiple>
               {{#each allDest as |destination|}}
               <option value="{{destination.id}}">{{destination.location}}</option>

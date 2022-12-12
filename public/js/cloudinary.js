@@ -1,11 +1,12 @@
 async function addImage(url) {
-  const tripId = $('.trip_title').data('tripid');
-  const response = fetch('/api/images', {
+  const tripId = $('#trip_title').data('tripid');
+  const response = await fetch('/api/images', {
     method: 'POST',
     body: JSON.stringify({image_url: url, trip_id: tripId}),
     headers: { 'Content-Type': 'application/json'},
   });
 }
+const currentUsername = $('#trip_title').data('username')
 
 function showUploadWidget() {
   cloudinary.openUploadWidget(
@@ -15,6 +16,8 @@ function showUploadWidget() {
       sources: ['local'],
       googleApiKey: '<image_search_google_api_key>',
       showAdvancedOptions: true,
+      folder: `${currentUsername}`,
+      // Can crop and resize images in upload widget not sure if we want to do that though
       cropping: false,
       multiple: true,
       defaultSource: 'local',

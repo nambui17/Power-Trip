@@ -1,38 +1,40 @@
-<div class='jumbotron jumbotron-fluid'>
-  <div class='container'>
+<div class="container-fluid mt-3">
+  <div class='jumbotron jumbotron-fluid'>
+  <div class='d-flex container-fluid justify-content-center'>
     <h1 class='display-3'>Power Trip</h1>
     <p class='lead'>Get There.</p>
   </div>
 </div>
 
-<div id='carouselExampleSlidesOnly' class='carousel slide' data-ride='carousel'>
-  <div class='carousel-inner'>
-    {{#each randImages as |image|}}
-    <div class='carousel-item {{#if @first}}active{{/if}}'>
-      <img
-        class='d-block w-100'
-        src={{image.image_url}}
-        alt='First slide'
-      />
+<div class="d-flex container-fluid justify-content-center mt-5">
+  <div id='carouselSlides' class='carousel slide' data-ride='carousel'>
+    <div class='carousel-inner'>
+      {{#each randImages as |image|}}
+      <div class='carousel-item {{#if @first}}active{{/if}}'>
+        <img
+          class='d-block w-100'
+          src={{image.image_url}}
+          alt='First slide'
+        />
+      </div>
+      {{/each}}
     </div>
-    {{/each}}
   </div>
 </div>
 
-<div class='container'>
-  <div class='tripContainer w-50'>
+<div class='container-fluid d-flex'>
+  {{#if logged_in}}
+  <div class='col col-md-8 col-xs-12 tripContainer w-75'>
     <div>
-      <div class='plannedTrips'>
+      <div class='row plannedTrips h-25'>
         <h2> Planned Trips </h2>
-        <p>
-          This will be where users can display their planned trips in the
-          future.
-        </p>
-
+        {{#each user.trips as |trip|}}
+        <a href="/trip/{{trip.id}}">{{trip.comment}}</a>
+        {{/each}}
       </div>
     </div>
 
-    <div>
+    <div class="col col-md-8 col-xs-12 tripContainer w-75">
       <div class='pastTrips'>
         <h2> Past Trips </h2>
         <p>
@@ -43,10 +45,10 @@
         </p>
       </div>
     </div>
-
   </div>
+  {{/if}}
 
-  <div class='w-100'>
+  <div class='col col-md-4 col-xs-12 pr-5'>
     <div class='updates'>
       <h2> Updates </h2>
       <p>
@@ -58,4 +60,5 @@
     </div>
   </div>
 
+</div>
 </div>

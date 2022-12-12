@@ -1,5 +1,5 @@
 var start = new Date();
-var end = new Date(new Date().setYear(start.getFullYear() + 1));
+var end = new Date(new Date().setYear(start.getFullYear() + 3));
 let userArr;
 let destArr;
 
@@ -29,7 +29,7 @@ $('#start-date')
     endDate: end,
   })
   .on('changeDate', function () {
-    $('#end-date').datepicker('setStartDate', new Date($(this).val()));
+    $('#end-date').datepicker('setStartDate', new Date($(this).val())+1);
   });
 
 $('#end-date')

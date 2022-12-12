@@ -1,0 +1,65 @@
+@import './style.css';
+
+#imageBox {
+    border: solid 5px;
+    border-color: #413a3a;
+}
+
+.tripImage {
+    width: 450px;
+    height: 450px;
+    border: solid 3px;
+    border-color: var(--slate);
+    background-color: var(--sienna);
+    object-fit: cover;
+}
+
+#trip_title {
+    font-size: 64px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.timeBox {
+    border-right: solid 5px;
+    border-color: var(--sienna);
+}
+
+.timeTitle {
+    color: var(--pale);
+    font-size: 42px;
+}
+
+.timeBody {
+    color: var(--sienna);
+    font-size: 28px;
+}
+
+#timeFrame {
+    border: solid 5px;
+    border-color: var(--sienna);
+    padding: 0 0 0 0;
+    background-color: var(--slate);
+}
+
+.sectHeader {
+    border-bottom: solid 5px;
+    border-color: var(--sienna);
+    padding: 0 0 10px 0;
+}
+
+#cost {
+    font-size: 32px;
+}
+
+.locales {
+    font-size: 32px;
+}
+
+.friends {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--imperial);
+}
+
+  
+
