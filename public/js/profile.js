@@ -2,8 +2,10 @@ var start = new Date();
 var end = new Date(new Date().setYear(start.getFullYear() + 1));
 let userArr;
 let destArr;
+
 $('#selectUsers').on('change', function() {
-  var selectedUsers = [];
+  var currentUser = $('#userWelcome').data('userid');
+  var selectedUsers = [currentUser];
   var $selectedOptions = $(this).find('option:selected');
   $selectedOptions.each(function() {
     selectedUsers.push($(this).val());
@@ -42,15 +44,12 @@ $('#end-date')
 
 $('#tripCreate').on('click', async function (e) {
   e.preventDefault();
-  debugger;
   const tripTitle = $('#tripComment').val();
   const startDate = $('#start-date').val();
   const endDate = $('#end-date').val();
   const price = $('#trip-price').val();
   const rating = $('#trip-rating').val();
   const done = $('#trip-done').is(':checked');
-  console.log(userArr);
-  console.log(destArr);
   if (tripTitle && startDate && endDate && price && rating) {
     const response = await fetch('/api/trips', {
       method: 'POST',

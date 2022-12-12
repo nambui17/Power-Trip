@@ -3,6 +3,7 @@ const Trip = require('./Trip');
 const Destination = require('./Destination');
 const Companion = require('./Companion');
 const TripDestination = require('./Trip_Destination');
+const Image = require('./Image');
 
 User.belongsToMany(Trip, {
   through: Companion,
@@ -24,10 +25,15 @@ Trip.belongsToMany(Destination, {
   foreignKey: 'trip_id'
 });
 
+Trip.hasMany(Image, {
+  foreignKey: 'trip_id'
+});
+
 module.exports = {
   User,
   Trip,
   Destination,
   Companion,
-  TripDestination
+  TripDestination,
+  Image
 };

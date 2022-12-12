@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{user.username}}!</h2>
+    <h2 id="userWelcome" data-userid="{{user.id}}">Welcome, {{user.username}}!</h2>
   </div>
 </div>
 
@@ -28,7 +28,7 @@
             <div class="col-md-8">
               <h4>
                 {{#each destinations as |destination|}}
-                <a href="/trip/{{trip.id}}">
+                <a href="/profile/trip/{{trip.id}}">
                 {{destination.location}}
                 </a>
                 {{/each}}
@@ -40,7 +40,6 @@
     </div>
   </div>
     {{!-- <div class="col col-8">
-
     </div> --}}
   </div>
 

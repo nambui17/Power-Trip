@@ -41,14 +41,16 @@ body {
 }
 
 .plannedTrips {
-    flex: 0 0 200px
+    flex: 0 0 200px;
     padding: 5px;
     /* width: 400px; */
     border-radius: 5px;
-    
-
 }
 
+.carousel-item img {
+    height: 50vh;
+    object-fit: contain;
+}
 
 .pastTrips {
     padding: 5px;
@@ -67,4 +69,15 @@ body {
     flex-direction: column;
     width: 500px;
 
+}
+
+/* Trip images on profile/trip page */
+.trip_image {
+    width: 250px;
+    height: 250px;
+}
+
+.trip_title {
+    font-size: 64px;
+    font-family: 'Quicksand', sans-serif;
 }

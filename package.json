@@ -22,11 +22,13 @@
   "homepage": "https://github.com/nambui17/Power-Trip#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "cloudinary": "^1.32.0",
     "connect-session-sequelize": "^7.1.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
+    "fs-extra": "^11.1.0",
     "moment": "^2.29.4",
     "mysql2": "^2.3.3",
     "sequelize": "^6.26.0"
