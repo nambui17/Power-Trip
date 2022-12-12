@@ -1,5 +1,12 @@
 const router = require('express').Router();
-const { Trip, Destination, User, TripDestination, Companion, Image} = require('../../models');
+const {
+  Trip,
+  Destination,
+  User,
+  TripDestination,
+  Companion,
+  Image,
+} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
@@ -8,13 +15,13 @@ router.post('/', async (req, res) => {
     req.body.users.map(async (user) => {
       await Companion.create({
         trip_id: tripData.id,
-        user_id: user
+        user_id: user,
       });
     });
     req.body.destinations.map(async (destination) => {
       await TripDestination.create({
         trip_id: tripData.id,
-        destination_id: destination
+        destination_id: destination,
       });
     });
     res.status(200).json(tripData);
@@ -64,7 +71,11 @@ router.put('/:id', withAuth, async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const tripData = await Trip.findAll({
-      include: [{ model: Destination }, {model: User, attributes: ['username','id']}, {model: Image, attributes: ['image_url']}],
+      include: [
+        { model: Destination },
+        { model: User, attributes: ['username', 'id'] },
+        { model: Image, attributes: ['image_url'] },
+      ],
     });
     res.status(200).json(tripData);
   } catch (err) {
@@ -78,7 +89,11 @@ router.get('/:id', async (req, res) => {
       where: {
         id: req.params.id,
       },
-      include: [{ model: Destination }, {model: Image, attributes: ['image_url']}],
+      include: [
+        { model: Destination },
+        { model: Image, attributes: ['image_url'] },
+        { model: User, attributes: ['username'] },
+      ],
     });
     res.status(200).json(tripData);
   } catch (err) {

@@ -58,13 +58,36 @@ router.get('/trip/:id', withAuth, async (req, res) => {
       },
       include: [
         { model: Destination },
-        { model: Image, attributes: ['image_url'] },
+        { model: Image, attributes: ['image_url'], limit: 9 },
+        { model: User, attributes: ['username']}
       ],
     });
     const trip = tripData.get({ plain: true });
+    const allUserData = await User.findAll({
+      where: {
+        id: {
+          [Op.ne]: req.session.user_id,
+        },
+      },
+    });
+    const destinationData = await Destination.findAll();
+    const allDest = destinationData.map((destination) =>
+      destination.get({ plain: true })
+    );
+    const allUsers = allUserData.map((u) => u.get({ plain: true }));
+    const userData = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+      include: [{ model: Trip, include: Destination }],
+    });
+    const u = userData.get({ plain: true });
     res.render('profiletrip', {
       trip,
       logged_in: true,
+      allDest,
+      allUsers,
+      u
     });
   } catch (err) {
     res.status(500).json(err);

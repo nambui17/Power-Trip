@@ -1,9 +1,21 @@
 module.exports = {
-  sameUser: (user) => {
-    if (user === req.session.user_id) {
-      return true;
-    } else {
-      return false;
-    }
+  formatDate: (date) => {
+    const nD = new Date(date);
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    const dateString = `${monthNames[nD.getMonth()]} ${nD.getDate()}, ${nD.getFullYear()}`;
+    return dateString;
   },
 };

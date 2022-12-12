@@ -1,0 +1,49 @@
+/*home page styling */
+@import './style.css';
+
+.container {
+    display: flex;
+    /* width: 1200px; */
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.plannedTrips {
+    flex: 0 0 200px;
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+}
+
+.carousel-item img {
+    height: 75vh;
+    object-fit: contain;
+}
+
+.pastTrips {
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+}
+
+.updates {
+    padding: 5px;
+    /* width: 400px; */
+    border-radius: 5px;
+}
+
+.tripContainer {
+    display: flex; 
+    flex-direction: column;
+    width: 500px;
+
+}
+
+#carouselSlides {
+    width: 75%;
+    height: 75%;
+    background-color: var(--blusaph);
+    border-radius: 25px;
+    border: solid 3px;
+    border-color: black;
+}

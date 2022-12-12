@@ -1,77 +1,226 @@
-<main class='container-fluid h-100'>
-  <div class='row'>
-    <div class='col col-8'>
-      <header class='row mb-5 mt-4'>
-        <h1 class='text-center trip_title' data-tripid="{{trip.id}}">{{trip.comment}}</h1>
+<main class='container-fluid h-100 mr-5 d-flex'>
+  <div class='row h-100'>
+    <div class='col-xl-8 col-xs-12 h-100'>
+      <header class='row mb-5 mt-4 h-10'>
+        <h1
+          class='text-center'
+          id="trip_title"
+          data-tripid='{{trip.id}}'
+          data-username="{{u.username}}"
+        >{{trip.comment}}</h1>
       </header>
-      <section class='container-fluid d-flex h-100'>
-        <section class='container-fluid d-flex justify-content-around'>
-          {{#each trip.images as |image|}}
-            <div class='card w-33'>
-              <img
-                src={{image.image_url}}
-                class='card-img-top trip_image'
-                alt='...'
-              />
-            </div>
-          {{/each}}
-        </section>
-        <aside>
-          <div class='card' style='width: 18rem;'>
-            <div class='card-body'>
-              <p class='card-text'>{{trip.id}}</p>
-            </div>
-          </div>
-        </aside>
-        <div class='container-fluid d-flex justify-content-between'>
-          <div class='form-check'>
-            <input
-              class='form-check-input'
-              type='checkbox'
-              value=''
-              id='defaultCheck1'
-            />
-            <label class='form-check-label' for='defaultCheck1'>
-              Default checkbox
-            </label>
-          </div>
-          <button id='upload_widget' class='btn btn-warning'>Upload Files</button>
-        </div>
+      <section
+        id='imageBox'
+        class='container-fluid d-flex flex-wrap justify-content-around'
+      >
+        {{#each trip.images as |image|}}
+          <img
+            src={{image.image_url}}
+            class='card-img-top tripImage p-2 m-2'
+            alt='...'
+          />
+        {{/each}}
       </section>
+      <div
+        class='container-fluid d-flex justify-content-between align-items-center mb-5 pb-5 mt-5'
+      >
+        <div class='form-check'>
+          <input class='form-check-input' type='checkbox' value='' id='done' />
+          <label class='form-check-label' for='done'>
+            Complete
+          </label>
+        </div>
+        <button
+          id='editTrip'
+          class='btn btn-warning'
+          data-toggle='modal'
+          data-target='#editTripModal'
+        >Edit Trip</button>
+      </div>
     </div>
-    <div class='col co-4'>
-      <div class='row'>
-
+    <aside class='col-xl-4 col-xs-12 h-100 mb-5 mt-4'>
+      <div class='row d-flex flex-nowrap' id='timeFrame'>
+        <div class='col col-6 timeBox'>
+          <h3 class='timeTitle'>Start Date</h3>
+          <p class='timeBody'>{{formatDate trip.start_date}}</p>
+        </div>
+        <div>
+          <div class='col col-6'>
+            <h3 class='timeTitle'>End Date</h3>
+            <p class='timeBody'>{{formatDate trip.end_date}}</p>
+          </div>
+        </div>
       </div>
       <div class='row'>
-
+        <header class='row mb-5 mt-4 h-10'>
+          <h2 class='text-center sectHeader'>Price</h2>
+          <p class='text-center' id='cost'>${{trip.price}}</p>
+        </header>
       </div>
       <div class='row'>
-        <h2>Destinations</h2>
+        <header class='row mb-5 mt-4 h-10'>
+          <h2 class='text-center sectHeader'>Destinations</h2>
+        </header>
       </div>
-      {{#each trip.destinations as |destination|}}
-        <div class='row'>
-          <p>{{destination.location}}</p>
+      <div class='container d-flex flex-nowrap'>
+        {{#each trip.destinations as |destination|}}
+          <div class='row w-100'>
+            <p class='locales text-center'>{{destination.location}}</p>
+          </div>
+        {{/each}}
+      </div>
+      <div class='row'>
+        <header class='row mb-5 mt-4 h-10'>
+          <h2 class='text-center sectHeader'>Whos Going?</h2>
+        </header>
+      </div>
+      {{#each trip.users as |user|}}
+        <div class='row w-100'>
+          <p class='friends text-center'>{{user.username}}</p>
         </div>
       {{/each}}
       <div class='row'>
+        <div class='row'>
+          <header class='row mb-5 mt-4 h-10'>
+            <h2 class='text-center sectHeader'>Rating</h2>
+          </header>
+        </div>
+        <form class='d-flex justify-content-center'>
+          <div class='rating'>
+            <input type='radio' name='rating' value='5' id='5' /><label
+              for='5'
+            >☆</label>
+            <input type='radio' name='rating' value='4' id='4' /><label
+              for='4'
+            >☆</label>
+            <input type='radio' name='rating' value='3' id='3' /><label
+              for='3'
+            >☆</label>
+            <input type='radio' name='rating' value='2' id='2' /><label
+              for='2'
+            >☆</label>
+            <input type='radio' name='rating' value='1' id='1' /><label
+              for='1'
+            >☆</label>
+          </div>
+        </form>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div
+  class='modal fade'
+  id='editTripModal'
+  tabindex='-1'
+  role='dialog'
+  aria-labelledby='tripModalLabel'
+  aria-hidden='true'
+>
+  <div class='modal-dialog modal-lg' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='tripModalLabel'>Create your trip here!</h5>
+        <button
+          type='button'
+          class='close'
+          data-dismiss='modal'
+          aria-label='Close'
+        >
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
         <form>
-          <div class='form-group'>
-            <label for='formControlRange'>Rating</label>
+          <div class='form-group mb-2'>
+            <label for='tripComment'>Trip Title</label>
+            <textarea
+              class='form-control form-control-sm'
+              id='tripComment'
+              rows='1'
+            >{{trip.comment}}</textarea>
+          </div>
+          <div class='form-group mb-3'>
+            <div class='row align-items-center justify-content-around'>
+              <label class='control-label col' for='start-date'>Start Date</label>
+              <input
+                class='form-control col'
+                id='start-date'
+                name='start-date'
+                placeholder='Start Date'
+                type='text'
+                value='{{trip.start_date}}'
+              />
+              <label class='control-label col' for='end-date'>End Date</label>
+              <input
+                class='form-control col'
+                id='end-date'
+                name='end-date'
+                placeholder='End Date'
+                type='text'
+                value='{{trip.end_date}}'
+              />
+            </div>
+          </div>
+          <div class='form-group mb-3'>
+            <label for='trip-price'>What is the price of your trip? $</label>
             <input
-              type='range'
-              class='form-control-range'
-              id='formControlRange'
+              class='form-input'
+              type='number'
+              id='trip-price'
+              name='trip-price'
+              value='{{trip.price}}'
             />
+          </div>
+          <div class='form-group mb-3'>
+            <label for='trip-rating'>What rating do you give this trip?</label>
+            <input
+              class='form-input'
+              type='number'
+              id='trip-rating'
+              name='trip-rating'
+              value='{{trip_rating}}'
+            />
+          </div>
+          <div class='form-group mb-3'>
+            <h3>Pick Everyone going on this trip!</h3>
+            <small>Hold control and click to select multiple people!</small>
+            <select class='selectpicker w-100' id='selectUsers' multiple>
+              {{#each allUsers as |friend|}}
+                <option value='{{friend.id}}'>{{friend.username}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class='form-group mb-3'>
+            <h3>Pick The Destinations for this Trip!</h3>
+            <small>Hold control and click to select multiple destinations</small>
+            <select class='selectpicker w-100' id='selectDest' multiple>
+              {{#each allDest as |destination|}}
+                <option
+                  value='{{destination.id}}'
+                >{{destination.location}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class='modal-footer'>
+            <button
+              type='button'
+              class='btn btn-secondary'
+              data-dismiss='modal'
+            >Close</button>
+            <button id='upload_widget' class='btn btn-warning'>Upload Files</button>
+            <button type='submit' class='btn btn-warning' id='tripCreate'>Edit
+              Trip!</button>
           </div>
         </form>
       </div>
     </div>
   </div>
-</main>
+</div>
 
 <script
   src='https://upload-widget.cloudinary.com/global/all.js'
   type='text/javascript'
 ></script>
 <script src='/js/cloudinary.js'></script>
+<script src='/js/profileTrip.js'></script>
