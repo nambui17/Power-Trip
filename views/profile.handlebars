@@ -1,19 +1,19 @@
+<main class="profile-container d-flex justify-content-center container-fluid">
+
 <div class="row">
   <div class="col-auto">
     <h2 id="userWelcome" data-userid="{{user.id}}">Welcome, {{user.username}}!</h2>
   </div>
 </div>
 
-<main class="container">
   <div class="row w-100">
     <div class="col col-12">
       <div class="col-md project-list">
-        <h3>Your Trips:</h3>
-        <div class='container'>
+        <div>
           <div class='row justify-content-center'>
             <button
               type='button'
-              class='btn btn-primary'
+              class='profile-btn btn'
               data-toggle='modal'
               data-target='#tripModal'
             >
@@ -22,20 +22,22 @@
           </div>
         </div>
 
+        <h5>Your Trips:</h5>
           {{#each trips as |trip|}}
-          <h2>{{trip.comment}}</h2>
+          <p>{{trip.comment}}</p>
           <div class="row mb-2">
             <div class="col-md-8">
-              <h3>
+              <p>
                 {{#each destinations as |destination|}}
-                <a href="/profile/trip/{{trip.id}}">
+                <a class="profile-link" href="/profile/trip/{{trip.id}}">
                 {{destination.location}}
                 </a>
                 {{/each}}
-              </h3>
+              </p>
             </div>
           </div>
           {{/each}}
+          
         </div>
     </div>
   </div>
