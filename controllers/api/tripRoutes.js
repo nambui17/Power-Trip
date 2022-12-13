@@ -11,6 +11,7 @@ const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
   try {
+    console.log(req.body)
     const tripData = await Trip.create(req.body);
     req.body.users.map(async (user) => {
       await Companion.create({
@@ -26,6 +27,7 @@ router.post('/', async (req, res) => {
     });
     res.status(200).json(tripData);
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });
