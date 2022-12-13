@@ -92,3 +92,4 @@ body {
   }
   
   .rating:hover > input:checked ~ label:before{ opacity: 0.4; }
+
