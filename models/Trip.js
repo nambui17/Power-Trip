@@ -19,7 +19,7 @@ Trip.init(
       },
     },
     rating: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.INTEGER,
       validate: {
         isFloat: true,
         min: 0,
