@@ -1,0 +1,35 @@
+@import './style.css';
+
+#userWelcome {
+    padding: 15px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    border: 3px solid var(--slate);
+    margin-top: 15px;
+    /* margin: auto; */
+}
+
+.profile-btn {
+    width: fit-content;
+    background-color: rgb(206, 126, 35);
+    border: rgb(206, 126, 35);
+}
+
+.profile-btn:hover {
+    background-color: var(--burlywood);
+    border: var(--burlywood);
+}
+
+.profile-link {
+    text-decoration: none;
+    color:black;
+}
+
+.profile-link:hover {
+    color:var(--slate);
+}

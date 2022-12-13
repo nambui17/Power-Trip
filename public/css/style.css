@@ -2,7 +2,7 @@
     --bisque: #FFE4C4;
     --burlywood: #DEB887;
     --blusaph: #2E5266;
-    --slate: #6E8898;
+    --slate: var(--burlywood);;
     --sienna: #3D0C11;
     --pale: #E9E3B4;
     --steel: #5A7D7C;
