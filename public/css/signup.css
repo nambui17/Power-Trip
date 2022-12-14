@@ -5,7 +5,10 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("https://source.unsplash.com/1600x900/?landscape")
+    background-image: url("https://source.unsplash.com/1600x900/?landscape");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
 }
 .card{
     background: #000000d0;

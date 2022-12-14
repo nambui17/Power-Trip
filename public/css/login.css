@@ -5,7 +5,8 @@
     box-sizing: border-box;
 } */
 body{
-    background-image: url("https://source.unsplash.com/1600x900/?travel")
+    background-image: url("https://source.unsplash.com/1600x900/?travel");
+    background-repeat: no-repeat;
 }
 .card{
     background: #000000d0;
