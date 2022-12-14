@@ -18,4 +18,9 @@ module.exports = {
     const dateString = `${monthNames[nD.getMonth()]} ${nD.getDate()}, ${nD.getFullYear()}`;
     return dateString;
   },
+  transform: (url) => {
+    const spl = url.split('upload/');
+    const newstring = spl[0] + 'upload/c_limit/' + spl[1];
+    return newstring;
+  }
 };
