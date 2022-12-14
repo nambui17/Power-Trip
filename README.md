@@ -13,9 +13,9 @@ Necessary dependencies can be installed by running "npm i" through command line.
 To begin using the application, users must create an account and log in. From there they can begin creating trips and uploading pictures.
 
 ## Screenshots
-![Screenshot](screenshot1.png)
-![Screenshot](screenshot2.png)
-![Screenshot](screenshot3.png)
+![Screenshot](/assets/images/screenshot1.JPG)
+![Screenshot](/assets/images/screenshot2.JPG)
+![Screenshot](/assets/images/screenshot3.JPG)
 
 ## Links
 [Link to deployed application](https://power-trip.herokuapp.com/)
