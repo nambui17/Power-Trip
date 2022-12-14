@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { Image, User, Trip, Destination} = require('../models');
-const withAuth = require('../utils/auth');
 const { Op, Sequelize } = require('sequelize');
-const cloudinary = require('cloudinary').v2;
+
 
 router.get('/', async (req, res) => {
   try {
