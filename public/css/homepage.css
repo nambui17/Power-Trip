@@ -10,8 +10,7 @@
 
 .plannedTrips {
     flex: 0 0 200px;
-    padding: 5px;
-    /* width: 400px; */
+    padding: 5px; 
     border-radius: 5px;
 }
 
@@ -22,19 +21,13 @@
 
 .pastTrips {
     padding: 5px;
-    /* width: 400px; */
     border-radius: 5px;
 }
 
-.updates {
-    padding: 5px;
-    /* width: 400px; */
-    border-radius: 5px;
-}
 
 .tripContainer {
-    display: flex; 
-    flex-direction: column;
+    display: flex;
+    /* flex-direction: */
     width: 500px;
 
 }
@@ -42,8 +35,32 @@
 #carouselSlides {
     width: 75%;
     height: 75%;
-    background-color: var(--blusaph);
+    background-color: #6E8898;
     border-radius: 25px;
     border: solid 3px;
     border-color: black;
+}
+
+.plan-link {
+    text-decoration: none;
+    color: black;
+}
+
+.plan-link:hover {
+    color:#6E8898;
+}
+
+.footer {
+    color: bisque;
+    background-color:rgb(0, 0, 0);
+    text-align: center;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: bisque;
+}
+
+.footer-link:hover {
+    color:#91972A;
 }

@@ -58,7 +58,7 @@ router.get('/trip/:id', withAuth, async (req, res) => {
       },
       include: [
         { model: Destination },
-        { model: Image, attributes: ['image_url'], limit: 9 },
+        { model: Image, limit: 9 },
         { model: User, attributes: ['username']}
       ],
     });
