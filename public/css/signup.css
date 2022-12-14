@@ -7,7 +7,8 @@
 body{
     background-image: url("https://source.unsplash.com/1600x900/?landscape");
     background-repeat: no-repeat;
-    object-fit: fill;
+    background-size: cover;
+    display: flex;
 }
 .card{
     background: #000000d0;
