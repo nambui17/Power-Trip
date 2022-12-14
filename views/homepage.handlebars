@@ -24,7 +24,7 @@
 
   <div class='container-fluid d-flex {{#if logged_in}}col-4{{/if}}'>
     {{#if logged_in}}
-    <div class='col col-md-8 col-xs-12 tripContainer w-75'> 
+    <div class='col col-md-8 col-xs-12 tripContainer w-75 text-nowrap'> 
       <div>
         <div class='row plannedTrips h-25'>
           <h2> Planned Trips </h2>
@@ -37,7 +37,7 @@
       </div>
 
       <div class="col col-md-8 col-xs-12 tripContainer w-75"> 
-        <div class='pastTrips'>
+        <div class='pastTrips mx-5'>
           <h2> Past Trips </h2>
           {{#each user.trips as |trip|}}
           {{#if trip.done}}

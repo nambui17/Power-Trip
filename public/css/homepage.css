@@ -52,8 +52,10 @@
 }
 
 .plan-link {
+    font-size: 28px;
+    color: var(--imperial);
     text-decoration: none;
-    color: black;
+
 }
 
 .plan-link:hover {
