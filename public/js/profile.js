@@ -3,20 +3,20 @@ var end = new Date(new Date().setYear(start.getFullYear() + 3));
 let userArr;
 let destArr;
 
-$('#selectUsers').on('change', function() {
+$('#selectUsers').on('change', function () {
   var currentUser = $('#userWelcome').data('userid');
   var selectedUsers = [currentUser];
   var $selectedOptions = $(this).find('option:selected');
-  $selectedOptions.each(function() {
+  $selectedOptions.each(function () {
     selectedUsers.push($(this).val());
   });
   userArr = selectedUsers;
 });
 
-$('#selectDest').on('change', function() {
+$('#selectDest').on('change', function () {
   var selectedDest = [];
   var destSel = $(this).find('option:selected');
-  destSel.each(function() {
+  destSel.each(function () {
     selectedDest.push($(this).val());
   });
   destArr = selectedDest;
@@ -29,7 +29,7 @@ $('#start-date')
     endDate: end,
   })
   .on('changeDate', function () {
-    $('#end-date').datepicker('setStartDate', new Date($(this).val())+1);
+    $('#end-date').datepicker('setStartDate', new Date($(this).val()) + 1);
   });
 
 $('#end-date')
@@ -61,9 +61,9 @@ $('#tripCreate').on('click', async function (e) {
         price: price,
         done: done,
         users: userArr,
-        destinations: destArr
+        destinations: destArr,
       }),
-      headers: {'Content-Type': 'application/json'}
+      headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
       document.location.replace('/profile');

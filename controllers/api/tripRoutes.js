@@ -37,7 +37,6 @@ router.delete('/:id', withAuth, async (req, res) => {
     const tripData = await Trip.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
     if (!tripData) {
@@ -50,13 +49,42 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const tripData = await Trip.update(req.body, {
+    const tripData = await Trip.update({
+      start_date: req.body.start_date,
+      end_date: req.body.end_date,
+      rating: req.body.rating,
+      comment: req.body.comment,
+      done: req.body.done,
+      price: req.body.price
+    }, {
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
+    });
+    console.log('hello');
+    await Companion.destroy({
+      where: {
+        trip_id: req.params.id
+      }
+    });
+    req.body.users.map(async (user) => {
+      await Companion.create({
+        trip_id: req.params.id,
+        user_id: user
+      });
+    });
+    await TripDestination.destroy({
+      where: {
+        trip_id: req.params.id
+      }
+    });
+    req.body.destinations.map(async (dest) => {
+      await TripDestination.create({
+        trip_id: req.params.id,
+        destination_id: dest
+      });
     });
 
     if (!tripData) {
@@ -64,7 +92,7 @@ router.put('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json(postData);
+    res.status(200).json(tripData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -76,7 +104,7 @@ router.get('/', async (req, res) => {
       include: [
         { model: Destination },
         { model: User, attributes: ['username', 'id'] },
-        { model: Image, attributes: ['image_url'] },
+        { model: Image, attributes: ['id','image_url'] },
       ],
     });
     res.status(200).json(tripData);
@@ -93,7 +121,7 @@ router.get('/:id', async (req, res) => {
       },
       include: [
         { model: Destination },
-        { model: Image, attributes: ['image_url'] },
+        { model: Image},
         { model: User, attributes: ['username'] },
       ],
     });

@@ -4,9 +4,10 @@
       <header class='row mb-5 mt-4 h-10'>
         <h1
           class='text-center'
-          id="trip_title"
+          id='trip_title'
           data-tripid='{{trip.id}}'
-          data-username="{{u.username}}"
+          data-username='{{u.username}}'
+          data-userid='{{u.id}}'
         >{{trip.comment}}</h1>
       </header>
       <section
@@ -18,6 +19,7 @@
             src={{image.image_url}}
             class='card-img-top tripImage p-2 m-2'
             alt='...'
+            data-imageid='{{image.id}}'
           />
         {{/each}}
       </section>
@@ -85,25 +87,19 @@
             <h2 class='text-center sectHeader'>Rating</h2>
           </header>
         </div>
-        <form class='d-flex justify-content-center'>
+        <div
+          class='d-flex justify-content-center'
+          id='rating'
+          data-rating='{{trip.rating}}'
+        >
           <div class='rating'>
-            <input type='radio' name='rating' value='5' id='5' /><label
-              for='5'
-            >☆</label>
-            <input type='radio' name='rating' value='4' id='4' /><label
-              for='4'
-            >☆</label>
-            <input type='radio' name='rating' value='3' id='3' /><label
-              for='3'
-            >☆</label>
-            <input type='radio' name='rating' value='2' id='2' /><label
-              for='2'
-            >☆</label>
-            <input type='radio' name='rating' value='1' id='1' /><label
-              for='1'
-            >☆</label>
+            <span class='r8' id='1'>&star;</span>
+            <span class='r8' id='2'>&star;</span>
+            <span class='r8' id='3'>&star;</span>
+            <span class='r8' id='4'>&star;</span>
+            <span class='r8' id='5'>&star;</span>
           </div>
-        </form>
+        </div>
       </div>
     </aside>
   </div>
@@ -179,8 +175,7 @@
               type='number'
               id='trip-rating'
               name='trip-rating'
-              value='{{trip_rating}}'
-
+              value='{{trip.rating}}'
             />
           </div>
           <div class='form-group mb-3'>
@@ -202,14 +197,15 @@
                 >{{destination.location}}</option>
               {{/each}}
             </select>
-            {{!-- <input
-                class='form-control col'
-                id='end-date'
-                name='end-date'
-                placeholder='End Date'
-                type='text'
-                value='{{trip.end_date}}'
-              /> --}}
+          </div>
+          <div class='form-group mb-3'>
+            <label for='trip-done'>Have you completed this trip?</label>
+            <input
+              class='form-input'
+              type='checkbox'
+              id='trip-done'
+              name='trip-done'
+            />
           </div>
           <div class='modal-footer'>
             <button
@@ -218,8 +214,16 @@
               data-dismiss='modal'
             >Close</button>
             <button id='upload_widget' class='btn btn-warning'>Upload Files</button>
-            <button type='submit' class='btn btn-warning' id='tripCreate'>Edit
-              Trip!</button>
+            <button
+              type='submit'
+              class='btn btn-warning'
+              id='editTripSubmit'
+            >Edit Trip!</button>
+            <button
+              type='submit'
+              class='btn btn-danger'
+              id='deleteTrip'
+            >Delete Trip</button>
           </div>
         </form>
       </div>
