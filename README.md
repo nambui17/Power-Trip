@@ -13,6 +13,9 @@ Necessary dependencies can be installed by running "npm i" through command line.
 To begin using the application, users must create an account and log in. From there they can begin creating trips and uploading pictures.
 
 ## Screenshots
+![Screenshot](screenshot1.png)
+![Screenshot](screenshot2.png)
+![Screenshot](screenshot3.png)
 
 ## Links
 [Link to deployed application](https://power-trip.herokuapp.com/)
@@ -28,7 +31,19 @@ To begin using the application, users must create an account and log in. From th
 [Kallie O'Gara GitHub](https://github.com/kallieog)
 
 ## License
-This project has an MIT license. Please see the [LICENSE] file for details.
+This project has an MIT license. Please see the [LICENSE](LICENSE) file for details.
+
+## Challenges
+* Learning to use Cloudinary, use the upload widget, and properties of uploading.
+* Learning how to get the photo link after uploading.
+* Many-to-many associations. 
+* Styling of the login page using unsplash
+
+## Successes
+* Allowing a trip to contain multiple destinations and users.
+* Allowing users to select users and destinations in a modal.
+* Login page and signup are random travel-related images.
+* Users can add pictures, create trips, and edit trips.
 
 ## Technologies used
 ![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
