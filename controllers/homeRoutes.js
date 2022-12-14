@@ -7,6 +7,7 @@ const { Op, Sequelize } = require('sequelize');
 router.get('/', async (req, res) => {
   try {
     const imageData = await Image.findAll({
+      subQuery: false,
       attributes: ['image_url'],
       order: [Sequelize.fn('RAND'),],
       limit: 5
@@ -15,9 +16,11 @@ router.get('/', async (req, res) => {
     let renderObj;
     if (req.session.logged_in) {
       const userData = await User.findOne({
+        subQuery: false,
         where: {
           id: req.session.user_id
-        }
+        },
+        include: [{model: Trip}]
       });
       const user = userData.get({plain: true});
       renderObj = {
