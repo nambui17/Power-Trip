@@ -17,7 +17,7 @@ const tripDestinationData = require('./tripDestinationData.json');
 const imageData = require('./imageData.json');
 
 async function seedDatabase() {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false });
   const users = await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
