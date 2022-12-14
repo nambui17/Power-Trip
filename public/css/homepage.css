@@ -14,10 +14,6 @@
     border-radius: 5px;
 }
 
-.carousel-item img {
-    height: 75vh;
-    object-fit: contain;
-}
 
 .pastTrips {
     padding: 5px;
@@ -39,6 +35,20 @@
     border-radius: 25px;
     border: solid 3px;
     border-color: black;
+}
+
+.carousel-inner {
+    border-radius: 25px;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
+.carousel-item img {
+    height: 75vh;
+    object-fit: fill;
+    border-radius: 25px;
 }
 
 .plan-link {
