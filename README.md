@@ -1,11 +1,12 @@
 # Power Trip
 
 ## Description
-Use Power Trip to track your travels! Users can log in to create and track their trips.
+Use Power Trip to track your travels! Users can log in to create and track their trips. Users can create an account and log in which will take them a homepage that lays out previous trips as well as planned trips for the future. 
 
 ## Installation
 
 ## Usage
+As a traveler, I want to see and rate my trips, so I can decide where I would return and where I would like to go.
 
 ## Links
 [Link to deployed application](https://power-trip.herokuapp.com/)

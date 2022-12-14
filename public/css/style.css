@@ -60,3 +60,6 @@ body {
     background-color: var(--slate);
     color: var(--bisque);
 }
+#logo{
+    width: 300px;
+}
