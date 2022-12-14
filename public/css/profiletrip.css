@@ -22,6 +22,7 @@
 .timeBox {
     border-right: solid 5px;
     border-color: var(--sienna);
+    background-color: var(--slate);
 }
 
 .timeTitle {
@@ -64,6 +65,18 @@
 .r8 {
     font-size: 52px;
     color: var(--imperial);
+}
+
+#complete {
+    color: var(--citron);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#incomplete {
+    color: var(--imperial);
+    font-size: 24px;
+    font-weight:500;
 }
   
 
