@@ -15,7 +15,7 @@
       <div class='carousel-inner'>
         {{#each randImages as |image|}}
         <div class='carousel-item {{#if @first}}active{{/if}}'>
-          <img class='d-block w-100' src={{image.image_url}} alt='First slide' />
+          <img class='d-block w-100' src={{transform image.image_url}} alt='First slide' />
         </div>
         {{/each}}
       </div>
