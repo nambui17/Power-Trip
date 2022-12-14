@@ -17,8 +17,7 @@ router.get('/', async (req, res) => {
       const userData = await User.findOne({
         where: {
           id: req.session.user_id
-        },
-        include: [{model: Trip}]
+        }
       });
       const user = userData.get({plain: true});
       renderObj = {
