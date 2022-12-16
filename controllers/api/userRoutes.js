@@ -29,9 +29,7 @@ router.post('/login', async (req, res) => {
     }
     const validPassword = await userData.checkPassword(req.body.password);
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Invalid email or password, please try again' });
+      res.render('login');
     }
     req.session.save(() => {
       req.session.user_id = userData.id;
